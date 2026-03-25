@@ -65,7 +65,6 @@ class Game {
     this.ground = null;
     this.bounceEffect = null;
     this.currentScore = 0;
-    this.soundsLoaded = false;
     this.gameStarted = false; // Флаг, что игра была запущена
     this.testResult = this.quickGPUTest();
     this.stateManager = new StateManager();
@@ -148,15 +147,7 @@ class Game {
   }
   
   async initAudio() {
-    this.soundManager = new SoundManager(this.gameState);
-    try {
-      console.log('Загрузка звуков...');
-      await this.soundManager.loadAllSounds();
-      this.soundsLoaded = true;
-      console.log('Звуки успешно загружены');
-    } catch (error) {
-      console.warn('Ошибка загрузки звуков:', error);
-    }
+    this.soundManager = new GSoundManager(this.gameState);
   }
 
   doPlaying() {
@@ -218,8 +209,8 @@ class Game {
       
       // Клавиша M для отключения звука
       if (e.key === 'm' || e.key === 'M') {
-        this.soundManager.setMuted(!this.soundManager.muted);
-        console.log(`Звук ${this.soundManager.muted ? 'выключен' : 'включен'}`);
+        this.soundManager.ToggleUserMuted();
+        console.log(`Звук ${this.soundManager.userMuted ? 'выключен' : 'включен'}`);
       }
     });
     
@@ -663,7 +654,6 @@ class Game {
       if (this.bounceEffect && this.ball) {
 
         let r = Math.abs(this.tree.getDelta()) * 50;
-        console.log(r);
         if (r > 1) {
           this.bounceEffect.createBounceEffect(this.ball.getPosition(), {
             particleCount: Math.floor(Math.random() * r + 10)
@@ -711,7 +701,7 @@ class Game {
   updateSound() {
     let on = this.volume.hasClass('on');
     this.stateManager.set('sound_on', on);
-    this.soundManager.setMuted(!on);
+    this.soundManager.SetUserMuted(!on);
   }
   
   createGameObjects() {
