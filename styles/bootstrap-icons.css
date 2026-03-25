@@ -1,0 +1,36 @@
+/*bootstrap-icons.css*/
+
+@font-face {
+    font-family: 'bootstrap-icons';
+    src: url('fonts/bootstrap-icons.woff2') format('woff2'),
+         url('fonts/bootstrap-icons.woff') format('woff');
+}
+
+.bi {
+    font-family: 'bootstrap-icons';
+    font-style: normal;
+}
+
+.bi-volume-down::before {
+    content: "\F60B";
+}
+
+.bi-volume-mute::before {
+    content: "\F60D";
+}
+
+.bi-mouse::before {
+	content: "\F499";
+}
+
+.bi-trophy-fill::before {
+	content: "\F5E6";
+}
+
+.bi-info-circle::before {
+	content: "\F431";
+}
+
+.bi-exclamation-triangle-fill::before {
+	content: "\F33A";
+}

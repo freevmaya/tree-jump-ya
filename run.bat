@@ -1,0 +1,1 @@
+npx @yandex-games/sdk-dev-proxy -p ./  --dev-mode --app-id=506584
