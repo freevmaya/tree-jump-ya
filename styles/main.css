@@ -37,7 +37,7 @@ body {
   height: 100vh;
   width: 100vw;
   background: radial-gradient(circle at top left, #7ed4e3, #223100);
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
 }
 
 /* Основной контейнер игры */
