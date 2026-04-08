@@ -139,6 +139,32 @@
       touch-action: none;
     }
   </style>
+  <script>
+    function disablePullToRefresh() {
+      // Предотвращаем стандартное поведение при скролле
+      document.addEventListener('touchmove', function(event) {
+          // Если свайп происходит вверху страницы и тянут вниз
+          if (event.touches.length > 1 || event.scale !== 1) {
+              return;
+          }
+          // Блокируем скролл тела документа
+          event.preventDefault();
+      }, { passive: false });
+
+      // Дополнительно для iOS: блокировка "резинового" эффекта
+      document.body.addEventListener('touchstart', function(event) {
+          if (event.touches.length > 1) {
+              event.preventDefault();
+          }
+      }, { passive: false });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', disablePullToRefresh);
+    } else {
+      disablePullToRefresh();
+    }
+  </script>
 <body>
   <div class="loader">
     <div class="spinner-border" role="status">
