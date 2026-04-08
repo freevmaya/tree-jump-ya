@@ -13,8 +13,8 @@
 	<!-- Bootstrap Icons -->
 	<link rel="stylesheet" href="./styles/bootstrap-icons.css">
 	<!-- Custom CSS -->
-	<link rel="stylesheet" href="./styles/main.css?v=54">
-	<link rel="stylesheet" href="./styles/dialog.css?v=54">
+	<link rel="stylesheet" href="./styles/main.css?v=58">
+	<link rel="stylesheet" href="./styles/dialog.css?v=58">
 	<script src="./scripts/jquery-4.0.0.min.js"></script>
 	<script async src="/sdk.js" onload="initSDK()"></script>
 	<script>
@@ -25,6 +25,8 @@
 	    async function initSDK() {
         ysdk = await YaGames.init();
         if (ysdk) {
+
+          ysdk.adv.showFullscreenAdv();
           ysdk.on('game_api_pause', handlePause);
           ysdk.on('game_api_resume', handleResume);
 
@@ -118,10 +120,22 @@
       display: none;
     }
 
-    body {
+    html {
+      position: fixed;      
+    }
+
+    hrml, body {
+      width: 100vw;
+      height: 100hw;
+      overscroll-behavior-y: contain;
       overflow: hidden;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
       user-select: none;
-      overscroll-behavior-y: none;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       touch-action: none;
     }
   </style>
@@ -320,49 +334,38 @@
       </div>
     </div>
   </div>
-  <script>
-    document.body.addEventListener('touchmove', (event) => {
-      // Проверяем, находимся ли мы в самом верху страницы
-      console.log(window.scrollY);
-      if (window.scrollY === 0 && event.cancelable) {
-          event.stopPropagation();
-      }
-    });
-  </script>
   <!-- Подключаем Bootstrap JS глобально -->
   <script src="./scripts/bootstrap.bundle.min.js"></script>
   <script src="./scripts/three.min.js"></script>
-  <script src="./scripts/utils/Utils.js?v=54"></script>
-  <script src="./scripts/languages/Lang.js?v=54"></script>
-  <script src="./scripts/constants.js?v=54"></script>
-  <script src="./scripts/GameState.js?v=54"></script>
-  <script src="./scripts/core/RendererManager.js?v=54"></script>
-  <script src="./scripts/core/CameraController.js?v=54"></script>
-  <script src="./scripts/core/ya-state-manager.js?v=54"></script>
-  <script src="./scripts/models/Tree.js?v=54"></script>
-  <script src="./scripts/models/Ball.js?v=54"></script>
-  <script src="./scripts/models/Branch.js?v=54"></script>
-  <script src="./scripts/models/Platform.js?v=54"></script>
-  <script src="./scripts/models/RotatePlatform.js?v=54"></script>
-  <script src="./scripts/models/KillerPlatform.js?v=54"></script>
-  <script src="./scripts/models/MagicPlatform.js?v=54"></script>
-  <script src="./scripts/models/Needle.js?v=54"></script>
-  <script src="./scripts/models/Crystal.js?v=54"></script>
-  <script src="./scripts/models/Background.js?v=54"></script>
-  <script src="./scripts/models/Grass.js?v=54"></script>
-  <script src="./scripts/models/Ground.js?v=54"></script>
-  <script src="./scripts/controls/MouseRotationControl.js?v=54"></script>
-  <script src="./scripts/utils/EventEmitter.js?v=54"></script>
-  <script src="./scripts/utils/TextureLoader.js?v=54"></script>
-  <script src="./scripts/utils/MathUtils.js?v=54"></script>
-  <script src="./scripts/utils/crypto-js.min.js?v=54"></script>
-  <script src="./scripts/effects/SparkEffect.js?v=54"></script>
-  <script src="./scripts/effects/BounceEffect.js?v=54"></script>
-  <script src="./scripts/physics/BallPhysics.js?v=54"></script>
-  <script src="./scripts/audio/SoundManager.js?v=54"></script>
-  <script src="./scripts/audio/GSoundManager.js?v=54"></script>
-  <script src="./scripts/main.js?v=54"></script>
-  <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
-  <script>eruda.init();</script>
+  <script src="./scripts/utils/Utils.js?v=58"></script>
+  <script src="./scripts/languages/Lang.js?v=58"></script>
+  <script src="./scripts/constants.js?v=58"></script>
+  <script src="./scripts/GameState.js?v=58"></script>
+  <script src="./scripts/core/RendererManager.js?v=58"></script>
+  <script src="./scripts/core/CameraController.js?v=58"></script>
+  <script src="./scripts/core/ya-state-manager.js?v=58"></script>
+  <script src="./scripts/models/Tree.js?v=58"></script>
+  <script src="./scripts/models/Ball.js?v=58"></script>
+  <script src="./scripts/models/Branch.js?v=58"></script>
+  <script src="./scripts/models/Platform.js?v=58"></script>
+  <script src="./scripts/models/RotatePlatform.js?v=58"></script>
+  <script src="./scripts/models/KillerPlatform.js?v=58"></script>
+  <script src="./scripts/models/MagicPlatform.js?v=58"></script>
+  <script src="./scripts/models/Needle.js?v=58"></script>
+  <script src="./scripts/models/Crystal.js?v=58"></script>
+  <script src="./scripts/models/Background.js?v=58"></script>
+  <script src="./scripts/models/Grass.js?v=58"></script>
+  <script src="./scripts/models/Ground.js?v=58"></script>
+  <script src="./scripts/controls/MouseRotationControl.js?v=58"></script>
+  <script src="./scripts/utils/EventEmitter.js?v=58"></script>
+  <script src="./scripts/utils/TextureLoader.js?v=58"></script>
+  <script src="./scripts/utils/MathUtils.js?v=58"></script>
+  <script src="./scripts/utils/crypto-js.min.js?v=58"></script>
+  <script src="./scripts/effects/SparkEffect.js?v=58"></script>
+  <script src="./scripts/effects/BounceEffect.js?v=58"></script>
+  <script src="./scripts/physics/BallPhysics.js?v=58"></script>
+  <script src="./scripts/audio/SoundManager.js?v=58"></script>
+  <script src="./scripts/audio/GSoundManager.js?v=58"></script>
+  <script src="./scripts/main.js?v=58"></script>
   </body>
 </html>
